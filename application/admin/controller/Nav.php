@@ -68,4 +68,25 @@ class  Nav  extends Common
 			));
 		return view();
 	}
+	public function del(){
+		$del=db('nav')->delete(input('id'));
+		if($del){
+			$this->success('删除栏目成功！',url('index'));
+		}else{
+			$this->error('删除栏目失败！',url('index'));
+		}
+	}
+	public function delsoncate(){
+        $cateid=input('id'); //要删除的当前栏目的id
+        $nav=new NavModel();
+        $sonids=$nav->getchilrenid($cateid);
+        $allcateid=$sonids;
+        $allcateid[]=$cateid;
+        foreach ($allcateid as $k=>$v) {
+            $article=new ArticleModel;
+            $article->where(array('cateid'=>$v))->delete();
+        }
+        if($sonids){
+        db('nav')->delete($sonids);
+        }
 } 
