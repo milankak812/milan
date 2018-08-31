@@ -5,13 +5,18 @@ use app\admin\model\Articlecategory as ArticlecategoryModel;
 class Articlecategory extends Common
 {
 	public function lst(){
+		
 		$articlecategory=new ArticlecategoryModel();
 		$cateres =$articlecategory->artcatetree();
-		$this->assign('cateres',$cateres);
+		$this->assign(array(
+			
+			'cateres'=>$cateres,
+			));
 		return view();
 	}
 
 	public function add(){
+		$cates =db('nav')->where('fenlei',1)->select();
 		$articlecategory =new ArticlecategoryModel();
 		if(request()->isPost()){
 			$articlecategory -> data(input('post.'));
@@ -19,11 +24,14 @@ class Articlecategory extends Common
 			if($add){
 				$this->success('添加文章分类成功',url('lst'));
 			}else{
-				$this->error('添加文章分类失败！',url('add'));
+				$this->error('添加文章分类失败！');
 			}
 		}
 		$cateres=$articlecategory->artcatetree();
-		$this->assign('cateres',$cateres);
+		$this->assign(array(
+			'cates'=>$cates,
+			'cateres'=>$cateres,
+			));
 		return view();
 	}
 	public function edit(){

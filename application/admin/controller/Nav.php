@@ -89,4 +89,5 @@ class  Nav  extends Common
         if($sonids){
         db('nav')->delete($sonids);
         }
+    }
 } 

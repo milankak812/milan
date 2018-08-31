@@ -4,6 +4,12 @@ use think\Model;
 class Articlecategory extends Model
 {
 	public function artcatetree(){
+		$cates =db('nav')->where('fenlei',1)->select();
+		
+
+		
+		
+		
 		$cateres= $this->select();
 		return $this->sort($cateres);
 	}

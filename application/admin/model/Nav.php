@@ -4,6 +4,7 @@ use think\Model;
 
 class Nav extends Model
 {
+	
 	public function navtree(){
 		$navres=db('nav')->order('sort desc')->select();
 		return $this->sort($navres);

@@ -1,6 +1,6 @@
 {include file='publics/publics'}
 <div id="urHere">DouPHP 管理中心<b>></b><strong>文章分类</strong> </div>   <div class="mainBox" style="height:auto!important;height:550px;min-height:550px;">
-        <h3><a href="{:url('add')}" class="actionBtn add">添加分类</a>文章分类</h3>
+        <h3><a href="{:url('Add')}" class="actionBtn add">添加分类</a>文章分类</h3>
     <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
      <tr>
         <th width="120" align="left">分类名称</th>
@@ -11,9 +11,9 @@
       </tr>
       {volist name="cateres" id="catere"}
             <tr>
-        <td align="left"> <a href="article.php?cat_id=1">{$catere.cat_name}</a></td>
-        <td>{$catere.unique_id}</td>
-        <td>{$catere.description}</td>
+        <td align="left"> <a href="{$catere.cat_id}">{$catere.cat_name}</a></td>
+        <td></td>
+        <td></td>
         <td align="center">{$catere.sort}</td>
         <td align="center"><a href="{:url('edit',array('id'=>$catere['cat_id']))}">编辑</a> | <a href="{:url('del',array('id'=>$catere['cat_id']))}">删除</a></td>
       </tr>
